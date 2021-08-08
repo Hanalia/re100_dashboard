@@ -6,9 +6,9 @@ name: Python package
 on:
   schedule:
     # 실제 스케쥴 작업이 시작될 cron을 등록하면 됩니다.
-    # 크론은 https://crontab.guru/ 여기서 확인
-    # 이 크론은 UTC 기준 매주 일요일 00:00에 시작
-    - cron:  '0 0 * * SUN'
+    # 크론은 https://crontab.guru/ 여기서 확인하면 좋을 것 같습니다.
+    # 이 크론은 everyday 00 am 
+    - cron:  '0 0 * * *'
 jobs:
   build:
 
@@ -38,10 +38,12 @@ jobs:
     - name: Test with pytest
       run: |
         python3 workflow.py
+      env:
+        GOOGLE_KEY: ${{ secrets.GOOGLE_KEY }}
     - name: Commits
       run: |
         git config --local user.email "davethe@naver.com"
-        git config --local user.name "re100" 
+        git config --local user.name "developers_Auto" 
         git add ./src/mydata/data.json
         git commit -m "Auto - Update data with Scraping"
         git pull origin master
