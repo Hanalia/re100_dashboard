@@ -16,7 +16,7 @@ import pandas as pd
 origin_df = pd.read_json("./src/mydata/data.json")
 
 # 합칠 때 에러 방지를 위해 Date은 String으로 
-origin['Date'] =pd.to_datetime(df2['Date'], format='%Y-%m-%d')
+origin_df['Date'] =pd.to_datetime(origin_df['Date'], format='%Y-%m-%d')
 
 
 
