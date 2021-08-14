@@ -13,7 +13,7 @@ import pandas as pd
 
 # 1) 먼저 파일을 불러와서 origin_df로 저장
 
-origin_df = pd.read_json("./src/mydata/data.json")
+origin_df = pd.read_json("./src/mydata/data.json", orient='records')
 
 # 합칠 때 에러 방지를 위해 Date은 String으로 
 origin_df['Date'] =pd.to_datetime(origin_df['Date'], format='%Y-%m-%d')
